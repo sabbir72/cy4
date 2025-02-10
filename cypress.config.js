@@ -13,18 +13,19 @@
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
-  
   e2e: {
-    reporter: "mocha-junit-reporter",
-  reporterOptions: {
-    mochaFile: "cypress/reports/junit/test-results.xml"
-  },
-    reporter: "mochawesome",
+    reporter: "mocha-multi-reporters",
     reporterOptions: {
-      reportDir: "cypress/reports",
-      overwrite: false,
-      html: true,
-      json: true
+      reporterEnabled: "mochawesome, mocha-junit-reporter",
+      mochawesomeReporterOptions: {
+        reportDir: "cypress/reports/mochawesome",
+        overwrite: false,
+        html: true,
+        json: true
+      },
+      mochaJunitReporterReporterOptions: {
+        mochaFile: "cypress/reports/junit/test-results.xml"
+      }
     }
   }
 });

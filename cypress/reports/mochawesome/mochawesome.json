@@ -2,14 +2,14 @@
   "stats": {
     "suites": 3,
     "tests": 3,
-    "passes": 1,
+    "passes": 3,
     "pending": 0,
-    "failures": 2,
-    "start": "2025-02-09T08:39:59.990Z",
-    "end": "2025-02-09T08:40:16.536Z",
-    "duration": 16546,
+    "failures": 0,
+    "start": "2025-02-10T05:35:02.488Z",
+    "end": "2025-02-10T05:35:11.435Z",
+    "duration": 8947,
     "testsRegistered": 3,
-    "passPercent": 33.33333333333333,
+    "passPercent": 100,
     "pendingPercent": 0,
     "other": 0,
     "hasOther": false,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "ff1115c7-db2b-4b52-8b9f-6b1b59a429ef",
+      "uuid": "4b60d751-eacf-4dae-99e3-e1bb91c43cbb",
       "title": "",
       "fullFile": "cypress/e2e/test.cy.js",
       "file": "cypress/e2e/test.cy.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "dc8c5b4b-823b-469d-8b4f-b69c3a681393",
+          "uuid": "b9118ff0-5995-4b0e-a2ca-372d57be0f43",
           "title": "My 1st Test",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "finds the content \"type\"",
               "fullTitle": "My 1st Test finds the content \"type\"",
               "timedOut": null,
-              "duration": 1647,
+              "duration": 1782,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -47,26 +47,26 @@
               "context": null,
               "code": "cy.visit(\"https://example.cypress.io\");\ncy.contains(\"get\").click();\ncy.url().should(\"include\", \"/querying\");\ncy.get(\"#query-btn\").should(\"contain\", \"Button\");\ncy.get(\"#query-btn\").should(\"have.text\", \"\\n                Button\\n              \");\ncy.get(\"#query-btn\").invoke(\"text\").then(text => {\n  expect(text.trim()).to.eq(\"Button\");\n});\n//     //   cy.get(\"#query-btn\").should(\"be.visible\");",
               "err": {},
-              "uuid": "982b0042-fa64-4491-bd40-f912970d1f98",
-              "parentUUID": "dc8c5b4b-823b-469d-8b4f-b69c3a681393",
+              "uuid": "ba13a41e-21d7-4c75-b500-0b731a948d9c",
+              "parentUUID": "b9118ff0-5995-4b0e-a2ca-372d57be0f43",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "982b0042-fa64-4491-bd40-f912970d1f98"
+            "ba13a41e-21d7-4c75-b500-0b731a948d9c"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 1647,
+          "duration": 1782,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
         },
         {
-          "uuid": "9abf6e92-be3d-437e-8eb4-5dbd2f9518d7",
+          "uuid": "493917f5-fc1c-497d-8be8-5c9590e8e7f6",
           "title": "My 2nd Test",
           "fullFile": "",
           "file": "",
@@ -77,39 +77,35 @@
               "title": "Gets, types and asserts",
               "fullTitle": "My 2nd Test Gets, types and asserts",
               "timedOut": null,
-              "duration": 4649,
-              "state": "failed",
-              "speed": null,
-              "pass": false,
-              "fail": true,
+              "duration": 978,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
               "pending": false,
               "context": null,
-              "code": "cy.visit(\"https://example.cypress.io\");\ncy.contains(\"type\").click();\n// Should be on a new URL which\n// includes '/commands/actions'\ncy.url().should(\"include\", \"/commands/actions\");\n// Get an input, type into it\ncy.get(\".action-emai\").type(\"fake@email.com\");\n//  Verify that the value has been updated\ncy.get(\".action-email\").should(\"have.value\", \"fake@email.com\");",
-              "err": {
-                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `.action-emai`, but never found it.",
-                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `.action-emai`, but never found it.\n    at Context.eval (webpack://eee/./cypress/e2e/test.cy.js:32:7)",
-                "diff": null
-              },
-              "uuid": "ba787080-5252-4061-85b7-b4e1c93db706",
-              "parentUUID": "9abf6e92-be3d-437e-8eb4-5dbd2f9518d7",
+              "code": "cy.visit(\"https://example.cypress.io\");\ncy.contains(\"type\").click();\n// Should be on a new URL which\n// includes '/commands/actions'\ncy.url().should(\"include\", \"/commands/actions\");\n// Get an input, type into it\ncy.get(\".action-email\").type(\"fake@email.com\");\n//  Verify that the value has been updated\ncy.get(\".action-email\").should(\"have.value\", \"fake@email.com\");",
+              "err": {},
+              "uuid": "0fcc0d93-a373-49df-9a6e-80a9890624c1",
+              "parentUUID": "493917f5-fc1c-497d-8be8-5c9590e8e7f6",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
-          "passes": [],
-          "failures": [
-            "ba787080-5252-4061-85b7-b4e1c93db706"
+          "passes": [
+            "0fcc0d93-a373-49df-9a6e-80a9890624c1"
           ],
+          "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 4649,
+          "duration": 978,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
         },
         {
-          "uuid": "e7f8876d-c01c-46b4-ba83-6aa2ebb62936",
+          "uuid": "56bada46-71f3-47d7-9b32-37dc00a8aede",
           "title": "3rd test ",
           "fullFile": "",
           "file": "",
@@ -120,33 +116,29 @@
               "title": "double click",
               "fullTitle": "3rd test  double click",
               "timedOut": null,
-              "duration": 8960,
-              "state": "failed",
-              "speed": null,
-              "pass": false,
-              "fail": true,
+              "duration": 5027,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
               "pending": false,
               "context": null,
-              "code": "cy.visit(\"https://example.cypress.io\");\ncy.contains(\"type\").click();\ncy.scrollTo(0, 1000);\ncy.wait(1000);\ncy.get('.action-div').scrollIntoView().dblclick();\ncy.get('.action-div').should('not.be.visible');\ncy.get('.action-input-hidden').should('be.visible');\n//checkbox\ncy.wait(1000);\ncy.get('.action-checkboxes [value=\"checkbox1\"]').not('[disabled]').check();\ncy.get('.action-checkboxes [value=\"checkbox1\"]').should('be.checked');\ncy.wait(1000);\ncy.get('.action-checkboxes [value=\"checkbox2\"]').check('checkbox2', {\n  force: true\n}); // specific check for use value .\ncy.wait(1000);\ncy.get(\".action-multiple-checkboxes [type='checkbox']\").check(); // specific check for use value .\n// radio \ncy.get(\"#optionsRadios1\").check().should('be.checked');\ncy.get('.action-radios [type=\"radio\"]').check('radio', {\n  force: true\n});",
-              "err": {
-                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `undefined`, but never found it.",
-                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `undefined`, but never found it.\n    at Context.eval (webpack://eee/./cypress/e2e/test.cy.js:67:44)",
-                "diff": null
-              },
-              "uuid": "8f7cd4a3-af61-4116-8275-547eb7f347f5",
-              "parentUUID": "e7f8876d-c01c-46b4-ba83-6aa2ebb62936",
+              "code": "cy.visit(\"https://example.cypress.io\");\ncy.contains(\"type\").click();\ncy.scrollTo(0, 1000);\ncy.wait(1000);\ncy.get('.action-div').scrollIntoView().dblclick();\ncy.get('.action-div').should('not.be.visible');\ncy.get('.action-input-hidden').should('be.visible');\n//checkbox\ncy.wait(1000);\ncy.get('.action-checkboxes [value=\"checkbox1\"]').not('[disabled]').check();\ncy.get('.action-checkboxes [value=\"checkbox1\"]').should('be.checked');\ncy.wait(1000);\ncy.get('.action-checkboxes [value=\"checkbox2\"]').check('checkbox2', {\n  force: true\n}); // specific check for use value .\ncy.get('.action-checkboxes [value=\"checkbox1\"]').uncheck();\ncy.wait(1000);\ncy.get(\".action-multiple-checkboxes [type='checkbox']\").check(); // specific check for use value .\n// radio \ncy.get(\"#optionsRadios1\").check().should('be.checked');\ncy.get('.action-radios [type=\"radio\"]').check('radio3', {\n  force: true\n});\ncy.get('.action-select').should('have.value', '--Select a fruit--');\ncy.get('.action-select').select('bananas');",
+              "err": {},
+              "uuid": "7d19757c-6578-4ddd-bd7e-f54ebc21c854",
+              "parentUUID": "56bada46-71f3-47d7-9b32-37dc00a8aede",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
-          "passes": [],
-          "failures": [
-            "8f7cd4a3-af61-4116-8275-547eb7f347f5"
+          "passes": [
+            "7d19757c-6578-4ddd-bd7e-f54ebc21c854"
           ],
+          "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 8960,
+          "duration": 5027,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -180,7 +172,8 @@
     },
     "marge": {
       "options": {
-        "reportDir": "cypress/reports",
+        "id": "default",
+        "reportDir": "cypress/reports/mochawesome",
         "overwrite": false,
         "html": true,
         "json": true

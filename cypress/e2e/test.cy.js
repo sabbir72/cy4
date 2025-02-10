@@ -74,7 +74,30 @@ describe( "3rd test ", ()=> {
     
     cy.get('.action-select').select('bananas');
 
+    it("Dropdown Selector Test", () => {
+      cy.get(".action-select").should("have.value", "--Select a fruit--");
+      cy.get(".action-select").select("bananas");
+      cy.get(".action-select").should("have.value", "bananas"); // Verify selection
+    });
+
+    cy.wait(1000);
+    
+    cy.get('#scroll-horizontal').scrollIntoView();
+
+    cy.get('#scroll-horizontal button').should('not.be.visible');
+    
+    cy.get('.trigger-input-range').invoke('val', 25);
+
 
   });
 
-})
+});
+
+// describe ("selector", ()=>{
+
+//   it('Selector test', () => {
+//     cy.get('.action-select').should('have.value', '--Select a fruit--');
+  
+//     cy.get('.action-select').select('bananas');
+//   });
+// })
