@@ -40,64 +40,81 @@ describe( "3rd test ", ()=> {
   it('double click', () => {
     cy.visit("https://example.cypress.io");
 
-    cy.contains("type").click();
+    // cy.contains("type").click();
 
-    cy.scrollTo(0,1000);
-    cy.wait(1000);
-    cy.get('.action-div').scrollIntoView().dblclick();
+    // cy.scrollTo(0,1000);
+    // cy.wait(1000);
+    // cy.get('.action-div').scrollIntoView().dblclick();
 
-    cy.get('.action-div').should('not.be.visible')
-    cy.get('.action-input-hidden').should('be.visible')
+    // cy.get('.action-div').should('not.be.visible')
+    // cy.get('.action-input-hidden').should('be.visible')
 
-    //checkbox
-    cy.wait(1000);
-    cy.get('.action-checkboxes [value="checkbox1"]').not('[disabled]').check();
+    // //checkbox
+    // cy.wait(1000);
+    // cy.get('.action-checkboxes [value="checkbox1"]').not('[disabled]').check();
 
-    cy.get('.action-checkboxes [value="checkbox1"]').should('be.checked');
+    // cy.get('.action-checkboxes [value="checkbox1"]').should('be.checked');
 
-    cy.wait(1000);
-    cy.get('.action-checkboxes [value="checkbox2"]').check('checkbox2',{force:true});// specific check for use value .
+    // cy.wait(1000);
+    // cy.get('.action-checkboxes [value="checkbox2"]').check('checkbox2',{force:true});// specific check for use value .
 
-    cy.get('.action-checkboxes [value="checkbox1"]').uncheck();
-    cy.wait(1000);
-    cy.get(".action-multiple-checkboxes [type='checkbox']").check();  // specific check for use value .
-
-
-    // radio 
-
-    cy.get("#optionsRadios1").check().should('be.checked');
-    cy.get('.action-radios [type="radio"]').check('radio3',{force:true});
+    // cy.get('.action-checkboxes [value="checkbox1"]').uncheck();
+    // cy.wait(1000);
+    // cy.get(".action-multiple-checkboxes [type='checkbox']").check();  // specific check for use value .
 
 
+    // // radio 
 
-    cy.get('.action-select').should('have.value', '--Select a fruit--');
+    // cy.get("#optionsRadios1").check().should('be.checked');
+    // cy.get('.action-radios [type="radio"]').check('radio3',{force:true});
+
+
+
+    // cy.get('.action-select').should('have.value', '--Select a fruit--');
     
-    cy.get('.action-select').select('bananas');
+    // cy.get('.action-select').select('bananas');
 
-    it("Dropdown Selector Test", () => {
-      cy.get(".action-select").should("have.value", "--Select a fruit--");
-      cy.get(".action-select").select("bananas");
-      cy.get(".action-select").should("have.value", "bananas"); // Verify selection
-    });
+    // it("Dropdown Selector Test", () => {
+    //   cy.get(".action-select").should("have.value", "--Select a fruit--");
+    //   cy.get(".action-select").select("bananas");
+    //   cy.get(".action-select").should("have.value", "bananas"); // Verify selection
+    // });
 
-    cy.wait(1000);
+    // cy.wait(1000);
     
-    cy.get('#scroll-horizontal').scrollIntoView();
+    // cy.get('#scroll-horizontal').scrollIntoView();
 
-    cy.get('#scroll-horizontal button').should('not.be.visible');
+    // cy.get('#scroll-horizontal button').should('not.be.visible');
     
-    cy.get('.trigger-input-range').invoke('val', 25);
+    // cy.get('.trigger-input-range').invoke('val', 25);
 
 
   });
 
 });
 
-// describe ("selector", ()=>{
 
-//   it('Selector test', () => {
-//     cy.get('.action-select').should('have.value', '--Select a fruit--');
-  
-//     cy.get('.action-select').select('bananas');
+// // Querying
+// describe ("Querying", ()=>{
+
+//   it('Querying test', () => {
+//     cy.visit("https://example.cypress.io");
+//     cy.get(".dropdown-toggle").click();
+//     cy.url().should("include", "/commands/Querying");
+//     // cy.get("Querying").click();
+//     // cy.get('[data-test-id="test-example"]').should('have.class', 'example')
 //   });
 // })
+
+context("visit", () => {
+	before(() => {
+		cy.visit("https://example.cypress.io/");
+			});
+
+it("should select 3rd one",()=>{
+cy.get(".dropdown-toggle").should('be.visible').click();
+cy.wait(1000);
+cy.get('ul.dropdown-menu').contains("Querying").should('be.visible').click();
+
+});
+});
