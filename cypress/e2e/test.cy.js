@@ -106,7 +106,7 @@ describe( "3rd test ", ()=> {
 //   });
 // })
 
-context("visit", () => {
+context("4th test", () => {
 	before(() => {
 		cy.visit("https://example.cypress.io/");
 			});
@@ -115,6 +115,20 @@ it("should select 3rd one",()=>{
 cy.get(".dropdown-toggle").should('be.visible').click();
 cy.wait(1000);
 cy.get('ul.dropdown-menu').contains("Querying").should('be.visible').click();
+cy.get('[data-test-id="test-example"]').should('have.class', 'example');
 
+
+cy.get(".dropdown-toggle").should('be.visible').click();
+cy.wait(1000);
+cy.get('ul.dropdown-menu').contains("Traversal").should('be.visible').click();
+cy.wait(1000)
+
+
+
+it("Check all breadcrumb texts", () => {
+  cy.get(".traversal-breadcrumb").children().each(($el, index) => {
+    cy.log(`Breadcrumb ${index + 1}: ${$el.text()}`); // প্রতিটি breadcrumb টেক্সট লগ করা
+  });
+});
 });
 });
