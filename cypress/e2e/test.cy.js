@@ -122,13 +122,30 @@ cy.get(".dropdown-toggle").should('be.visible').click();
 cy.wait(1000);
 cy.get('ul.dropdown-menu').contains("Traversal").should('be.visible').click();
 cy.wait(1000)
+cy.get(".dropdown-menu").children('.active').should('contain', 'Traversal');
+cy.get(".dropdown-menu").find('.active').should('contain', 'Traversal');
 
 
+   });
+});
 
-it("Check all breadcrumb texts", () => {
-  cy.get(".traversal-breadcrumb").children().each(($el, index) => {
-    cy.log(`Breadcrumb ${index + 1}: ${$el.text()}`); // প্রতিটি breadcrumb টেক্সট লগ করা
+
+context ("5 th Test ", ()=>{
+
+  before(() => {
+		cy.visit("https://example.cypress.io/");
+			});
+  it('closest', () => {
+    cy.get(".dropdown-toggle").should('be.visible').click();
+    cy.wait(1000);
+cy.get('ul.dropdown-menu').contains("Traversal").should('be.visible').click();
+    cy.get(".list-group") .closest('ul').should('have.class','list-group');
+    cy.get('#eq').scrollIntoView();
+    cy.get('.traversal-list>li').eq(3).should('contain','sphynx');
+    cy.get('.traversal-list>li').first().should('contain','tabby');
+    cy.get(".traversal-list>li").last().should("contain", "burmese");
+
+    
+    cy.get('.traversal-nav').filter('.active').should('contain','About');
   });
-});
-});
-});
+})
