@@ -129,7 +129,6 @@ cy.get(".dropdown-menu").find('.active').should('contain', 'Traversal');
    });
 });
 
-
 context ("5 th Test ", ()=>{
 
   before(() => {
@@ -143,9 +142,37 @@ cy.get('ul.dropdown-menu').contains("Traversal").should('be.visible').click();
     cy.get('#eq').scrollIntoView();
     cy.get('.traversal-list>li').eq(3).should('contain','sphynx');
     cy.get('.traversal-list>li').first().should('contain','tabby');
-    cy.get(".traversal-list>li").last().should("contain", "burmese");
+    cy.get(".traversal-list>li").last().should("contain", "burmese")
+  });
+});
 
+
+context("6th test", ()=>{
+  before(() => {
+		cy.visit("https://example.cypress.io/commands/traversal#");
+			});
+  it('other test ', () => {
+
+    cy.get('.traversal-nav>li').filter('.active').should('contain','About');
+    cy.xpath("//a[normalize-space()='5']").click();
+    cy.get('#next').scrollIntoView();
+
+    cy.wait(1000);
+
+    cy.scrollTo(0, 200);
+    cy.get('.traversal-ul') .contains('oranges').next().should('contain', 'bananas');
+    cy.get('.traversal-next-all').contains('oranges').nextAll().should('have.length', 3) ;
+
+    cy.get('#nextUntil').scrollIntoView();
+  
+    cy.get("#fruits").nextUntil("#nuts").should("have.length", 7);
+    cy.get('.traversal-disabled .btn').not('[disabled]').should('not.contain', 'Disabled');
+    cy.get('.traversal-mark').parent().should('contain', 'porta ac consectetur ac');
+    cy.get('.traversal-cite').parents();
+    cy.get('.clothes-nav').find('.active').parentsUntil('.clothes-nav').should('have.length', 2);
+
+  cy.get('.birds').find('.active').prev().click();
+  cy.get('.traversal-pills .active').siblings().eq(0).click();
     
-    cy.get('.traversal-nav').filter('.active').should('contain','About');
   });
 })
