@@ -77,8 +77,13 @@ describe("Window Object Test", () => {
 // cy.viewport('iphone-4', 'landscape')
 cy.wait(200)
 cy.hash().should('be.empty')
+cy.get(".dropdown-toggle").should('be.visible').click();
+cy.wait(1000);
+cy.get('ul.dropdown-menu').contains("Misc").should('be.visible').click();
 
        });
+
+        
         
     })
   });
