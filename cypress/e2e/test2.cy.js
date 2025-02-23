@@ -81,6 +81,7 @@ cy.get(".dropdown-toggle").should('be.visible').click();
 cy.wait(1000);
 cy.get('ul.dropdown-menu').contains("Misc").should('be.visible').click();
 
+
        });
 
         
