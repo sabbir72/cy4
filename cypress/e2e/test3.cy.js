@@ -31,8 +31,12 @@ cy.wrap(arr).spread(function(foo, bar, baz){
   cy.get('.as-table')
   .find('tbody>tr').first()
   .find('td').first()
-  .find('button').as('firstBtn')
-  cy.get('@firstBtn').click()
+  .find('button').as('firstSabbir')
+  cy.get('@firstSabbir').click()
+
+  cy.get('@firstSabbir')
+  .should('have.class', 'btn')
+  .and('contain', 'Changed')
 })
   });
 });
