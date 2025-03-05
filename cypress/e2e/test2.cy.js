@@ -59,16 +59,7 @@ describe("Window Object Test", () => {
 // cy.wait(200)
 // cy.viewport('ipad-mini')
 // cy.wait(200)
-// cy.viewport('iphone-6+')
-// cy.wait(200)
-// cy.viewport('iphone-6')
-// cy.wait(200)
-// cy.viewport('iphone-5')
-// cy.wait(200)
-// cy.viewport('iphone-4')
-// cy.wait(200)
-// cy.viewport('iphone-3')
-// cy.wait(200)
+
 
 // // cy.viewport() accepts an orientation for all presets
 // // the default orientation is 'portrait'
