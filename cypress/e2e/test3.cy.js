@@ -32,6 +32,7 @@ cy.wrap(arr).spread(function(foo, bar, baz){
   .find('tbody>tr').first()
   .find('td').first()
   .find('button').as('firstBtn')
+  cy.get('@firstBtn').click()
 })
   });
 });
