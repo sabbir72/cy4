@@ -1,33 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="Mocha Tests" time="11.992" tests="5" failures="1">
-  <testsuite name="Root Suite" timestamp="2025-02-16T04:43:46" tests="0" file="cypress/e2e/test.cy.js" time="0.000" failures="0">
+<testsuites name="Mocha Tests" time="2.328" tests="1" failures="0">
+  <testsuite name="Root Suite" timestamp="2025-03-05T06:03:19" tests="0" file="cypress/e2e/test3.cy.js" time="0.000" failures="0">
   </testsuite>
-  <testsuite name="My 1st Test" timestamp="2025-02-16T04:43:46" tests="1" time="1.722" failures="0">
-    <testcase name="My 1st Test finds the content &quot;type&quot;" time="0.933" classname="finds the content &quot;type&quot;">
-    </testcase>
-  </testsuite>
-  <testsuite name="My 2nd Test" timestamp="2025-02-16T04:43:47" tests="1" time="0.835" failures="0">
-    <testcase name="My 2nd Test Gets, types and asserts" time="0.812" classname="Gets, types and asserts">
-    </testcase>
-  </testsuite>
-  <testsuite name="3rd test " timestamp="2025-02-16T04:43:48" tests="1" time="0.128" failures="0">
-    <testcase name="3rd test  double click" time="0.122" classname="double click">
-    </testcase>
-  </testsuite>
-  <testsuite name="4th test" timestamp="2025-02-16T04:43:48" tests="1" time="3.823" failures="0">
-    <testcase name="4th test should select 3rd one" time="3.805" classname="should select 3rd one">
-    </testcase>
-  </testsuite>
-  <testsuite name="5 th Test " timestamp="2025-02-16T04:43:52" tests="1" time="5.482" failures="1">
-    <testcase name="5 th Test  closest" time="0.000" classname="closest">
-      <failure message="Timed out retrying after 4000ms: Too many elements found. Found &apos;7&apos;, expected &apos;6&apos;." type="AssertionError"><![CDATA[AssertionError: Timed out retrying after 4000ms: Too many elements found. Found '7', expected '6'.
-    at Context.eval (webpack://eee/./cypress/e2e/test.cy.js:150:57)
-
-      + expected - actual
-
-      -7
-      +6
-      ]]></failure>
+  <testsuite name=" " timestamp="2025-03-05T06:03:19" tests="1" time="2.325" failures="0">
+    <testcase name="  1st" time="1.490" classname="1st">
     </testcase>
   </testsuite>
 </testsuites>
