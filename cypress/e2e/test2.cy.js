@@ -28,7 +28,7 @@ describe("Window Object Test", () => {
         cy.wait(1000);
         cy.get('ul.dropdown-menu').contains("Location").should('be.visible').click();
         cy.go('back');
-        cy.wait(1000)  // 1 সেকেন্ড অপেক্ষা করবে
+        cy.wait(1000)  //
         cy.go('forward')
         cy.reload()
         cy.reload(true) 
