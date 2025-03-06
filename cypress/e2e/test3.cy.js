@@ -37,6 +37,11 @@ cy.wrap(arr).spread(function(foo, bar, baz){
   cy.get('@firstSabbir')
   .should('have.class', 'btn')
   .and('contain', 'Changed')
+
+  cy.get('.network-btn').click()
+  cy.intercept('GET', '**/comments/*').as('getComment')
+  cy.wait('@getComment').its('response.statusCode').should('eq', 200)
+
 })
   });
 });
