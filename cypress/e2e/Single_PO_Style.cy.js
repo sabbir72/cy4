@@ -65,40 +65,28 @@ describe('Single product style create Test', () => {
      
     // cy.get("button.grid-add-row").eq(0).click();
     cy.get('input[aria-expanded="true"]').click().type('0075')
-  //  cy.get('input[data-fieldname="item_code"]').click().type('0075')
+  
    cy.get('p[title="SHIRT-809672"]').click()
     cy.get("div:nth-child(1)>form:nth-child(1)>div:nth-child(1)>div:nth-child(1)>div:nth-child(2)>div:nth-child(1)>div:nth-child(1)>div:nth-child(1)>input:nth-child(1)").invoke('attr','value',"RMG-0075")
 
 
     // color select
-    cy.get('input[data-fieldname="colors_html_fields"]').click();
-    cy.get('div[role="option"]').contains("Blue").click();
-    cy.get('div[role="option"]').contains("Red").click();
+  
+    cy.get('input[data-target="Style Colors"]').eq(1).click().type("Blue")
+  
+
 
     // size select
-    cy.get('input[data-fieldname="sizes_html_fields"]').click()
+    cy.get('input[data-fieldname="sizes_html_fields"]').eq(1).click()
     cy.get('div[role="option"]').contains("10").click();
-    cy.get('div[role="option"]').contains("M").click();
     cy.wait(1000)
-    cy.get('button.grid-collapse-row').click()
+
+    cy.get("div:nth-child(5)>div:nth-child(1)>div:nth-child(2)>div:nth-child(1)>div:nth-child(2)>div:nth-child(2)>div:nth-child(1)").click({force:true})
+     
+    cy.get('button[data-label="Save"] span').eq(0).click()
 
 
-
-    // cy.contains('button', 'Insert Below').click()
-
-
-    // // 2nd Item
-    // cy.get('input[aria-expanded="true"]').type('0091')
-    // cy.contains('strong', 'Sandstorm Cargo Pant').first().click();
-
-    // cy.get('input[data-fieldtype="Float"]').eq(1).click().type("1");
-
-    // cy.get('input[data-fieldname="item_type"]').eq(2).type("Basic Pant");
-
-    // cy.get('input[data-fieldname="item_department"]').eq(2).type("Men's Wear");
-
-    // cy.get("div:nth-child(2)>div:nth-child(2)>div:nth-child(1)>div:nth-child(1)>span:nth-child(2)>button:nth-child(1)").click()
-    // cy.contains('button', 'Save').click();
+   
       }
     })
 
