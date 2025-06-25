@@ -35,6 +35,13 @@ describe('Set product style create Test', () => {
 
     cy.wait(1000);
 
+    // without items submit try
+    cy.get('button[data-label="Save"] span').eq(0).click()
+    cy.get('div.msgprint').should('be.visible').and('contain.text', 'Mandatory fields required in Style');
+    cy.wait(1000)
+    cy.get('button[data-dismiss="modal"]').click({force:true});
+
+
     cy.then(()=>{
       const setItems=cy.softCheck('button.grid-add-row',"Success Check" )
 
@@ -62,6 +69,9 @@ describe('Set product style create Test', () => {
 
     cy.get("div:nth-child(2)>div:nth-child(2)>div:nth-child(1)>div:nth-child(1)>span:nth-child(2)>button:nth-child(1)").click()
     cy.contains('button', 'Save').click();
+
+   cy.wait(1000)
+   cy.get('button[data-original-title="Print"]').scrollIntoView().click()
       }
     })
 
