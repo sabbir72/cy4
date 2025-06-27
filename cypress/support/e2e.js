@@ -17,3 +17,4 @@
 import './commands'
 import 'cypress-xpath';
 require('cypress-xpath');
+import "@testing-library/cypress/add-commands";

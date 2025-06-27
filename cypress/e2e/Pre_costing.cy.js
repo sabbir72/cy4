@@ -24,16 +24,21 @@ describe('Login and PreCosting Single Product', () => {
 
     cy.contains("div.section-head", "Cost Configuration").click();
     // cy.wait(2000)
-    cy.get('input[data-fieldname="currency"]').click().clear().type("USD");
+    cy.get('input[data-fieldname="currency"]').scrollIntoView().click().clear().type("USD");
     cy.get('p[title="USD"]').click();
 
-    // cy.get('input[data-fieldname="add_wastage_in_quantity"]').check();
+    // cy.get('div[data-fieldname="add_wastage_in_quantity"]').check({ force: true });
+    // cy.get('div[data-fieldname="item_level_operation"]').check({ force: true });
+    cy.findByRole("checkbox", { name: "Add Wastage in Quantity" }).click();
+    cy.findByRole("checkbox", { name: "Item Level Operation" }).click();
 
-    cy.contains("span.label-area", "Add Wastage in Quantity").parent().click(); // এর প্যারেন্টে যায় (সাধারণত চেকবক্স সহ container)
-      // .find('input[type="checkbox"]') // ভিতরের চেকবক্স খুঁজে পায়
-      // চেক করে (জোরপূর্বক, যদি হিডেন থাকে)
+    // add fabric
 
-    cy.printErrors();
+    cy.get("button.grid-add-row").eq(0).click();
+
+     
+    // cy.contains("span.label-area", "Item Level Operation").scrollIntoView().click();
+    // cy.printErrors();
   })
 
 })
