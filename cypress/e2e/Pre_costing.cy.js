@@ -63,16 +63,37 @@ describe('Login and PreCosting Single Product', () => {
    cy.Add_Row_Fabric()
    cy.get('div[data-fieldname="item_code"]').eq(1).click({ force: true }).type('fabric').wait(100)
    cy.get('ul[role="listbox"]:not([hidden]) div[role="option"]').first().click();
-   cy.get('input[data-fieldname="source"]').eq(0).click()
-   cy.get('div[data-fieldname="source"] p').eq(2).click()
+   cy.wait(1000)
+    //  source
+   cy.get('input[data-fieldname="source"]').type('Local').click().wait(200)
+   cy.get('p[title="Local"]').first().click()
+  //  cy.get('ul[role="listbox"]:not([hidden]) p[title="Local"]').click();
+  // comsume
+  cy.get('input[placeholder="Consumption"]').eq(0).click({force:true}).type(2.25).wait(100)
+  // user rate
+  cy.get('input[data-fieldname="user_rate_entry"]').type(5.25).click()
    cy.wait(2000)
-// add two
 
-// cy.contains("label", "Fabric Items").scrollIntoView();
-// cy.Add_Row_Fabric()
-//    cy.get('div[data-fieldname="item_code"]').eq(3).click({ force: true }).type('Single Jersey 100% Cotton Fabric').wait(100)
-//    cy.get('ul[role="listbox"]:not([hidden]) div[role="option"]').first().click();
-//    cy.wait(2000);
+   // add two
+
+cy.contains("label", "Fabric Items").scrollIntoView();
+cy.Add_Row_Fabric()
+   cy.get('div[data-fieldname="item_code"]').eq(3).click({ force: true }).type('Single Jersey 100% Cotton Fabric').wait(100)
+   cy.get('ul[role="listbox"]:not([hidden]) div[role="option"]').first().click();
+   
+     //  source
+    //  cy.get('input[data-fieldname="source"]').eq(3).click({force:true}).type('Local').wait(200)
+    cy.get('input[data-fieldname="source"]')
+  .should('be.visible')
+  .click({ force: true })
+  .type('Local');
+     cy.get('p[title="Local"]').first().click()
+    //  cy.get('ul[role="listbox"]:not([hidden]) p[title="Local"]').click();
+    // comsume
+    cy.get('input[placeholder="Consumption"]').eq(3).click({force: true }).type(2.25).wait(100)
+    // user rate
+    cy.get('input[data-fieldname="user_rate_entry"]').type(5.25).click()
+   cy.wait(2000);
 
 
 //    // add three
