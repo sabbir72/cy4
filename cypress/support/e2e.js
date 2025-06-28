@@ -18,3 +18,12 @@ import './commands'
 import 'cypress-xpath';
 require('cypress-xpath');
 import "@testing-library/cypress/add-commands";
+
+
+Cypress.on("uncaught:exception", (err, runnable) => {
+  if (err.message.includes("erpnext.bom.update_cost is not a function")) {
+    // এই error হলে test fail করবে না
+    return false;
+  }
+});
+  

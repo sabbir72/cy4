@@ -29,12 +29,30 @@ describe('Login and PreCosting Single Product', () => {
 
     // cy.get('div[data-fieldname="add_wastage_in_quantity"]').check({ force: true });
     // cy.get('div[data-fieldname="item_level_operation"]').check({ force: true });
-    cy.findByRole("checkbox", { name: "Add Wastage in Quantity" }).click();
-    cy.findByRole("checkbox", { name: "Item Level Operation" }).click();
+    // cy.findByRole("checkbox", { name: "Add Wastage in Quantity" }).click();
+    // cy.findByRole("checkbox", { name: "Item Level Operation" }).click();
 
-    // add fabric
+    // add row
+    cy.get("div:nth-child(5)>div:nth-child(2)>div:nth-child(6)>div:nth-child(1)>div:nth-child(1)>button:nth-child(3)").click({force: true})
 
-    cy.get("button.grid-add-row").eq(0).click();
+    cy.get('div.btn-open-row[data-original-title="Edit"]').click();
+  
+    //  edit icon
+  
+
+  
+
+      cy.get('input[aria-expanded="true"]').click()
+     
+      cy.get("div.form-area p").eq(2).click()
+
+
+     
+      cy.get('div[aria-modal="true"] input').type("fabric-0004");
+      cy.findByRole("button", { name: "Search" }).click();
+      cy.findByRole("link", { name: "Fabric-0004" }).click();
+
+
 
      
     // cy.contains("span.label-area", "Item Level Operation").scrollIntoView().click();
