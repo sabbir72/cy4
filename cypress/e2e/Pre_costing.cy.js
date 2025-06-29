@@ -83,10 +83,7 @@ cy.Add_Row_Fabric()
    
      //  source
     //  cy.get('input[data-fieldname="source"]').eq(3).click({force:true}).type('Local').wait(200)
-    cy.get('input[data-fieldname="source"]')
-  .should('be.visible')
-  .click({ force: true })
-  .type('Local');
+    cy.get('input[data-fieldname="source"]').eq(3).should('be.visible').click({ force: true }).type('Local');
      cy.get('p[title="Local"]').first().click()
     //  cy.get('ul[role="listbox"]:not([hidden]) p[title="Local"]').click();
     // comsume
