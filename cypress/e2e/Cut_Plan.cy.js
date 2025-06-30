@@ -110,6 +110,10 @@ describe('Cut_plan Test', () => {
     cy.contains('div[role="option"]', 'Sleeve')
       .should('be.visible')
       .click({ force: true });
+
+      // save button
+      cy.contains('kbd', 'ESC').click()
+      cy.get('button[data-label="Save"]').click() 
     
 //       cy.get('input[data-fieldname="marker_width"]').type('200')
 //       cy.get('input[data-fieldname="marker_efficiency"]').type('85%')
@@ -169,26 +173,26 @@ describe('Cut_plan Test', () => {
 
 // ======================dublicate =============================
 
-// describe('Login and cut plan Test with dublicate', () => {
-//   it('Handles login to cut plan', () => {
+describe('Login and cut plan Test with dublicate', () => {
+  it('Handles login to cut plan', () => {
   
-//      cy.login()
-//      cy.wait(2000)
-//       cy.get("input#navbar-search").type("Cut Plan");
-//      cy.get('li[aria-selected="true"]').first().click();
+     cy.login()
+     cy.wait(2000)
+      cy.get("input#navbar-search").type("Cut Plan");
+     cy.get('li[aria-selected="true"]').first().click();
       
-//    cy.get('input[data-fieldname="name"]').clear().type('Cutplan-26-06-0834');
+   cy.get('input[data-fieldname="name"]').clear().type('Cutplan-26-06-0834');
 
-//      cy.wait(1000)
-//      cy.get('a[data-name="Cutplan-26-06-0834"]').click()
-//      cy.wait(1000)
-//      cy.get('button[aria-label="Menu"]').eq(2).click()
-//      cy.get('span[data-label="Duplicate"] span').eq(1).click()
+     cy.wait(1000)
+     cy.get('a[data-name="Cutplan-26-06-0834"]').click()
+     cy.wait(1000)
+     cy.get('button[aria-label="Menu"]').eq(2).click()
+     cy.get('span[data-label="Duplicate"] span').eq(1).click()
 
-//     cy.printErrors()
-//   })
+    cy.printErrors()
+  })
 
-// })
+})
 
 // ====================Cencel-Amended - again submit===============
 
