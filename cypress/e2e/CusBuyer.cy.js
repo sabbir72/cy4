@@ -60,16 +60,42 @@ describe("Login and Customer and buyer", () => {
         
           
          
-          cy.get('div.row-index').eq(1).click()
+          cy.get("div.row-index").eq(1).click()
+
+          cy.get('input[data-fieldname="user"]').eq(0).clear().type("Administrator").click();   
           
-// cy.get('div[data-fieldname="user"] ul')
-//           .eq(0)
-//           .find('li[role="option"]')
-//           .contains('Administrator')
-//           .click();
+          cy.contains('button', 'Insert Below').click();
           
+          cy.get("div.freeze-message-container").click();
+
+          // DELETE THE  ROW
+          cy.get('input.grid-row-check').eq(2).click();
+          cy.get('button[data-action="delete_rows"]').eq(0).click();
+          // cy.get('button[data-label="Yes"]').click();
+
+
+          // aDD A NEW ROW
+          
+          cy.get("div:nth-child(2)>div:nth-child(1)>div:nth-child(1)>form:nth-child(1)>div:nth-child(1)>div:nth-child(2)>div:nth-child(6)>div:nth-child(1)>div:nth-child(1)>button:nth-child(3)").click({force:true});
+
+          cy.get('div[data-fieldname="bond_license_no"]').eq(1).click();
+          cy.get('p[title="Create a new Bond License"]').click();
+
+
+          // new bond license
 
           
+          cy.get('div[aria-modal="true"] button').eq(4).click({force: true});
+          cy.wait (2000);
+
+          cy.get('input[data-fieldname="bond_license_no"]', { timeout: 10000 })
+            .click()
+            .type("Bond License " + uniquePart);
+          cy.get('button[data-label="Save"]').click();
+
+
+
+
         
 
       }
