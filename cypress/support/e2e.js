@@ -18,6 +18,7 @@ import './commands'
 import 'cypress-xpath';
 require('cypress-xpath');
 import "@testing-library/cypress/add-commands";
+require("cypress-xpath");
 
 
 Cypress.on("uncaught:exception", (err, runnable) => {

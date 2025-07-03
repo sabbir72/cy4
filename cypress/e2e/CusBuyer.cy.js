@@ -84,14 +84,48 @@ describe("Login and Customer and buyer", () => {
 
           // new bond license
 
-          
-          cy.get('div[aria-modal="true"] button').eq(4).click({force: true});
-          cy.wait (2000);
+          cy.get('div[aria-modal="true"] input').click().type("Bond License " + uniquePart);
+          cy.get('div[role="dialog"] button').eq(4).click();
 
-          cy.get('input[data-fieldname="bond_license_no"]', { timeout: 10000 })
-            .click()
-            .type("Bond License " + uniquePart);
-          cy.get('button[data-label="Save"]').click();
+          // contact 
+          cy.get("div:nth-child(3)>div:nth-child(2)>div:nth-child(1)>form:nth-child(1)>div:nth-child(1)>div:nth-child(2)>div:nth-child(6)>div:nth-child(1)>div:nth-child(1)>button:nth-child(3)").click()
+          cy.get('div[data-fieldname="first_name"]').eq(1).click().type("John");
+          cy.get('input[placeholder="Email Address"]').click().type("e@gmail.com");
+          cy.get('input[placeholder="Mobile No"]').click().type("1234567890");
+          cy.get('input[placeholder="Is Primary Contact"]').click();
+          cy.get('input[placeholder="Address"]').click().type("123 Main St, City, Country");
+          cy.get('input[placeholder="Is Primary Address"]').click();
+          
+          //currency
+          cy.get('div[data-fieldname="currency_and_exchange_rate_"] div').eq(0).click();
+          cy.get('input[data-fieldname="default_currency"]').click();
+          cy.get('input[data-fieldname="default_currency"]').type("USD");
+          // cy.get('div[role="option"]').contains("USD").click();
+
+
+          // exchange rate
+          cy.get('input[data-fieldname="default_price_list"]').click();
+          cy.get('p[title="Accessories-pl"]').first().click();
+
+          // Accounting
+          cy.get('div[data-fieldname="default_receivable_accounts"] div').eq(0).click();
+          cy.get('div[data-fieldname="default_receivable_accounts"] button').eq(2).click();
+
+          cy.get("div.static-area").eq(17).click();
+
+
+          // cy.get('a[data-doctype="Company"]').click()
+          cy.get('div[data-fieldname="account"]').eq(1).click();
+
+          cy.get('input[data-fieldname="account"]').click().type("Debtors - INCTL")
+
+          cy.get('div[role="option"]').contains("Debtors - INCTL").click();
+    
+        
+     
+
+ 
+          
 
 
 
