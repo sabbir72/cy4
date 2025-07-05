@@ -88,10 +88,9 @@ describe("Login and Customer and buyer", () => {
         //   .click()
         //   .type("Bond License " + uniquePart);
         // cy.get('div[role="dialog"] button').eq(4).click();
-        cy.get('input[data-doctype="Bond License"]')
-          .eq(0)
-          .click()
-          .type("Bond License " + uniquePart);
+        cy.get('input[data-doctype="Bond License"]').eq(0).click().type("Bond License " + uniquePart);
+        
+        
         cy.findByRole("button", { name: "Edit Full Form" }).click();
         // cy.get('input[data-fieldname="bond_license_date"]').click().type('09-07-2025');  
         cy.get("div:nth-child(2)>div:nth-child(1)>div:nth-child(1)>form:nth-child(1)>div:nth-child(3)>div:nth-child(1)>div:nth-child(2)>div:nth-child(1)>input:nth-child(1)").click()
@@ -140,11 +139,13 @@ describe("Login and Customer and buyer", () => {
         // cy.get('a[data-doctype="Company"]').click()
         cy.get('div[data-fieldname="account"]').eq(1).click();
 
-        cy.get('input[data-fieldname="account"]')
-          .click()
-          .type("Debtors - INCTL");
+        // cy.get('input[data-fieldname="account"]')
+        //   .click()
+        //   .type("Debtors - USD - INCTL");
+        // cy.get('div[data-fieldname="account"] p').eq(1).click();
+        cy.get('div[role="option"]').contains("Debtors - USD - INCTL").click({ force: true });
 
-        cy.get('div[role="option"]').contains("Debtors - INCTL").click();
+        // cy.get('div[role="option"]').contains("Debtors - INCTL").click();
 
         // Trems and Conditions
         cy.get('div[data-fieldname="credit_limit_section"] div').eq(0).click();
@@ -177,7 +178,7 @@ describe("Login and Customer and buyer", () => {
         cy.get('div[role="option"]').contains("Sales Team").click();
         cy.get('input[data-fieldname="allocated_percentage"]')
           .click()
-          .type("10");
+          .type('100');
 
         //  buyer code
         const prefix01 = "BUYERCODE-";
@@ -198,7 +199,7 @@ describe("Login and Customer and buyer", () => {
         ).click();
 
         // Save the form  not fixed 
-        // cy.get('button[data-label="Save"] span').eq(0).click();
+        cy.get('button[data-label="Save"] span').eq(0).click();
       }
     });
 
