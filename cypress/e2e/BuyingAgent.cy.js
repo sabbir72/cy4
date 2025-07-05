@@ -62,7 +62,7 @@ cy.get('input[data-fieldname="fiscal_year"]').click();
 cy.get('div[role="option"]').contains("2024-2025").click();
 cy.get('input[data-fieldname="target_qty"]').click().type("1000");
 cy.get('input[data-fieldname="target_amount"]').click().type("1000000");
-
+cy.get('input[data-fieldname="distribution_id"]').click().type("100000");
 
 // reference code
 const userName = "code";
@@ -70,6 +70,8 @@ const randomCode01 = Math.floor(10 + Math.random() * 900);
 const referralCode = `R-${userName}-${randomCode01}`;
 cy.get('input[data-fieldname="referral_code"]').clear().type(referralCode);
 
+// save the form
+cy.get('button[data-label="Save"] span').eq(0).click();
 
     cy.printErrors();
   });
