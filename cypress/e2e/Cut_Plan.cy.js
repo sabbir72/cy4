@@ -15,6 +15,8 @@ describe('Cut_plan Test', () => {
     cy.get('input[data-fieldtype="Table MultiSelect"]').click({force: true}).wait(1000)
     cy.get('input[data-fieldtype="Table MultiSelect"]').type("JACK & JONES-00865").wait(1000)
     cy.get('div[role="option"]').contains('JACK & JONES-00865').click({ force: true }).wait(1000);
+
+    cy.get('input[data-fieldname="bom_no"]').clear().type("BOM-RMG-0081-018").click();
    
    
 
@@ -37,8 +39,8 @@ describe('Cut_plan Test', () => {
 
     // // gsm
 
-    cy.get('input[data-fieldname="gsm"]').click().type('GSM-130-0539')
-    cy.get('div[role="option"]').contains('GSM-130-0539').click();
+    // cy.get('input[data-fieldname="gsm"]').click().type('GSM-130-0539')
+    // cy.get('div[role="option"]').contains('GSM-130-0539').click();
 
 
     // Step 1: Click on GMT Color input field
@@ -148,32 +150,41 @@ cy.get('div[data-fieldname="marker_section_section"] div').eq(0).scrollIntoView(
       cy.get('div[data-fieldname="ratio"] input').click().type(1).scrollIntoView()
       
 
-    // // select body parts
+    // select body parts
     // cy.get('input[data-target="Body Parts Mapping Details"]').click();
     // cy.get('input[data-target="Body Parts Mapping Details"]').type('Back');
     // cy.wait(2000);
     // cy.contains('div[role="option"]', 'Back')
     //   .should('be.visible')
     //   .click({ force: true });  
+
+
+    // function 
+    Cypress.Commands.add("selectBodyParts", (parts) => {
+      parts.forEach((part) => {
+        cy.get('input[data-target="Body Parts Mapping Details"]')
+          .as("bodyInput")
+          .click();
+
+        cy.get("@bodyInput").clear();
+        cy.get("@bodyInput").type(part, { delay: 100 });
+
+        cy.wait(300);
+
+        cy.contains('div[role="option"]', part)
+          .should("be.visible")
+          .click({ force: true });
+      });
+    });
+    
+     cy.selectBodyParts(['Back', 'Front', 'Sleeve']);  // body parts to select
+    
     //   // =======
-    // cy.get('input[data-target="Body Parts Mapping Details"]').click();
-    // cy.get('input[data-target="Body Parts Mapping Details"]').type('Front');
-    // cy.wait(2000);
-    // cy.contains('div[role="option"]', 'Front')
-    //   .should('be.visible')
-    //   .click({ force: true });
-  
-    // // =======
-    // cy.get('input[data-target="Body Parts Mapping Details"]').click();
-    // cy.get('input[data-target="Body Parts Mapping Details"]').type('Sleeve');
-    // cy.wait(2000);
-    // cy.contains('div[role="option"]', 'Sleeve')
-    //   .should('be.visible')
-    //   .click({ force: true });
+   
 
     //   // save button
-    //   cy.contains('kbd', 'ESC').click()
-    //   cy.get('button[data-label="Save"]').click() 
+      cy.contains('kbd', 'ESC').click()
+      cy.get('button[data-label="Save"]').click() 
     
 //       cy.get('input[data-fieldname="marker_width"]').type('200')
 //       cy.get('input[data-fieldname="marker_efficiency"]').type('85%')
