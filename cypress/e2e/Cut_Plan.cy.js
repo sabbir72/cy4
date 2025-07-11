@@ -134,18 +134,18 @@ cy.get('div[data-fieldname="marker_section_section"] div').eq(0).scrollIntoView(
 
 
       cy.get('div[data-fieldname="ply_wise_cut"] button').click() // Add row Ply Wise Cut button
-      cy.get('div[data-fieldname="no_of_ply"] input').eq(0).click().type('100').scrollIntoView()
+      cy.get('div[data-fieldname="no_of_ply"] input').eq(0).click().type(51).scrollIntoView().wait(1000)
 
     //   // next row
-      cy.get('div[data-fieldname="ply_wise_cut"] button').eq(1).click({force:true}) // Add row Ply Wise Cut button
-      cy.get('div[data-fieldname="no_of_ply"] input').eq(1).click().type('50').scrollIntoView()
+      cy.get('div[data-fieldname="ply_wise_cut"] button').eq(1).click({force:true}) .wait(1000) // Add row Ply Wise Cut button
+      cy.get('div[data-fieldname="no_of_ply"] input').eq(1).click().clear().type(50).scrollIntoView()
 
 
-    //   // set cut qty
-    //   cy.get('button[data-fieldname="set_cut_qty"]').click()
+      // set cut qty
+      cy.get('button[data-fieldname="set_cut_qty"]').click()
       
-    //   // size wise cut
-    //   cy.get('div[data-fieldname="ratio"] input').click().type('2').scrollIntoView()
+      // size wise cut
+      cy.get('div[data-fieldname="ratio"] input').click().type(1).scrollIntoView()
       
 
     // // select body parts
