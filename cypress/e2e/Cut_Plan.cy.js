@@ -1,5 +1,5 @@
 // ===================================================
-let cleanedText = "";
+
 describe('Cut_plan Test', () => {
   it('Handles Cut_Plan', () => {
     cy.login()
@@ -179,83 +179,90 @@ cy.get('div[data-fieldname="marker_section_section"] div').eq(0).scrollIntoView(
     
      cy.selectBodyParts(['Back', 'Front', 'Sleeve']);  // body parts to select
     
-    //   // =======
-   
-
-    //   // save button
-      cy.contains('kbd', 'ESC').click()
-
+   // save button
+      cy.contains('kbd', 'ESC').click();
       cy.wait(1000)
-
-      // cy.get("li.disabled a")
-      //   .invoke("text")
-      //   .then((text) => {
-      //     cutPlanName = text.trim();
-      //     cy.log("Captured:", cutPlanName);
-      //   });
-
-
-      // cy.get("li.disabled a").then(($el) => {
-      //   const win = $el[0].ownerDocument.defaultView;
-      //   const beforeContent = win
-      //     .getComputedStyle($el[0], "::before")
-      //     .getPropertyValue("content");
-
-      //   // 👉 content এর quote remove করে log
-      //   const cleanedText = beforeContent.replace(/^"|"$/g, "");
-      //   cy.log("::before content:", cleanedText);
-      // });
-
-      // cy.get('button[data-label="Save"]').click() 
-    
-//      
-
-
-
+      cy.get('button[data-label="Save"]').click() 
     cy.printErrors()
   })
 })
 
-// ======================dublicate =============================
 
-describe('Login and cut plan Test with dublicate', () => {
-  it('Handles login to cut plan', () => {
+
+
+
+// ======================dublicate =============================
+describe("Login and cut plan Test with duplicate", () => {
+  it("Handles login to cut plan", () => {
+    cy.login();
+    cy.wait(2000);
+
+    cy.get("input#navbar-search").type("Cut Plan");
+    cy.get('li[aria-selected="true"]').first().click();
+    cy.wait(1000);
+
+    cy.get('button[title="Clear all filters"]').click();
+
+    // ✅ First row checkbox check
+    cy.get(".list-row-container")
+      .first()
+      .find("input.list-row-checkbox")
+      .check({ force: true });
+
+    // ✅ Get title and use it inside .then()
+    cy.get('a[data-doctype="Cut Plan"]')
+      .first()
+      .invoke("attr", "title")
+      .then((title) => {
+        cy.log("Title value:", title);
+
+        // ✅ Use title inside this block
+        cy.get('input[data-fieldname="name"]').clear().type(title);
+        cy.get(`a[data-name="${title}"]`).click();
+
+        cy.wait(1000);
+        cy.get('button[aria-label="Menu"]').eq(2).click();
+        cy.get('span[data-label="Duplicate"] span').eq(1).click();
+
+        cy.printErrors();
+      });
+  });
+});
+
+
+// // ====================Cencel-Amended - again submit===============
+
+describe('Login and cut plan  with Cencel-Amended - again submit', () => {
+  it('Handles login failure softly and proceeds', () => {
   
-     cy.login()
-     cy.wait(2000)
-      cy.get("input#navbar-search").type("Cut Plan");
-     cy.get('li[aria-selected="true"]').first().click();
-      
-     cy.get('input[data-fieldname="name"]').clear().type(cleanedText); // Use the captured name
-     cy.wait(1000)
-     cy.get(`a[data-name="${cleanedText}"]`).click();
-     cy.wait(1000)
+    cy.login()
+    cy.wait(2000)
+    cy.get("input#navbar-search").type("Cut Plan");
+    cy.get('li[aria-selected="true"]').first().click();
+    cy.wait(1000);
+    cy.get('button[title="Clear all filters"]').click();
+
+    // ✅ First row checkbox check
+    cy.get(".list-row-container")
+      .first()
+      .find("input.list-row-checkbox")
+      .check({ force: true });
+
+    // ✅ Get title and use it inside .then()
+    cy.get('a[data-doctype="Cut Plan"]')
+      .first()
+      .invoke("attr", "title")
+      .then((title) => {
+        cy.log("Title value:", title);
+
+        // ✅ Use title inside this block
+        cy.get('input[data-fieldname="name"]').clear().type(title);
+        cy.get(`a[data-name="${title}"]`).click();
      cy.get('button[aria-label="Menu"]').eq(2).click()
      cy.get('span[data-label="Duplicate"] span').eq(1).click()
 
     cy.printErrors()
-  })
+     })
+   })
+})  
 
-})
-
-// // ====================Cencel-Amended - again submit===============
-
-// // describe('Login and cut plan  with Cencel-Amended - again submit', () => {
-// //   it('Handles login failure softly and proceeds', () => {
-  
-// //     cy.login()
-// //     cy.wait(2000)
-// //     cy.get("input#navbar-search").type("Cut Plan");
-// //     cy.get('li[aria-selected="true"]').first().click();
-// //     cy.get('input[data-fieldname="name"]').clear().type('Cutplan-26-06-0834');
-
-// //      cy.wait(1000)
-// //      cy.get('a[data-name="Cutplan-26-06-0834"]').click()
-// //      cy.wait(1000)
-// //      cy.get('button[aria-label="Menu"]').eq(2).click()
-// //      cy.get('span[data-label="Duplicate"] span').eq(1).click()
-
-// //     cy.printErrors()
-// //   })
-
-// // })
