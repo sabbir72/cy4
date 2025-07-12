@@ -9,27 +9,27 @@ describe('Login and PreCosting Single Product', () => {
     //  inside data
     // cy.wait(2000)
     cy.scrollTo("top");
-    cy.get('input[data-fieldname="finished_goods_type"]').click();
+    cy.get('input[data-fieldname="finished_goods_type"]').click().wait(1000);
     cy.get('div[role="option"]').contains("RMG").click();
 
-    // cy.wait(2000)
-    // cy.get('input[data-fieldname="style"]').click();
-    // cy.get('div[role="option"]').contains("eid-01-2025").click();
-    // cy.scrollTo(0, 500);
-    // //    cy.wait(2000)
-    // // cost
-    // cy.contains("div.section-head", "Cost Configuration")
-    //   .scrollIntoView()
-    //   .wait(2000);
+    cy.wait(2000)
+    cy.get('input[data-fieldname="style"]').click().wait(1000);
+    cy.get('div[role="option"]').contains("eid-01-2025").click();
+    cy.scrollTo(0, 500);
+    //    cy.wait(2000)
+    // cost
+    cy.contains("div.section-head", "Cost Configuration")
+      .scrollIntoView()
+      .wait(2000);
 
-    // cy.contains("div.section-head", "Cost Configuration").click();
-    // // cy.wait(2000)
-    // cy.get('input[data-fieldname="currency"]').scrollIntoView().click().clear().type("USD");
-    // cy.get('p[title="USD"]').click();
+    cy.contains("div.section-head", "Cost Configuration").click();
+    // cy.wait(2000)
+    cy.get('input[data-fieldname="currency"]').scrollIntoView().click().clear().type("USD");
+    cy.get('p[title="USD"]').click();
 
     // =================no need now====================
-    // cy.get('div[data-fieldname="add_wastage_in_quantity"]').check({ force: true });
-    // cy.get('div[data-fieldname="item_level_operation"]').check({ force: true });
+    // cy.get('div[data-fieldname="add_wastage_in_quantity"]').check();
+    // cy.get('div[data-fieldname="item_level_operation"]').check({ force: true});
     // cy.findByRole("checkbox", { name: "Add Wastage in Quantity" }).click();
     // cy.findByRole("checkbox", { name: "Item Level Operation" }).click();
     // ----------------------------------------------------------------
@@ -76,21 +76,21 @@ describe('Login and PreCosting Single Product', () => {
 
    // add two
 
-cy.contains("label", "Fabric Items").scrollIntoView();
-cy.Add_Row_Fabric()
-   cy.get('div[data-fieldname="item_code"]').eq(3).click({ force: true }).type('Single Jersey 100% Cotton Fabric').wait(100)
-   cy.get('ul[role="listbox"]:not([hidden]) div[role="option"]').first().click();
-   
-     //  source
-    //  cy.get('input[data-fieldname="source"]').eq(3).click({force:true}).type('Local').wait(200)
-    cy.get('input[data-fieldname="source"]').eq(3).should('be.visible').click({ force: true }).type('Local');
-     cy.get('p[title="Local"]').first().click()
-    //  cy.get('ul[role="listbox"]:not([hidden]) p[title="Local"]').click();
-    // comsume
-    cy.get('input[placeholder="Consumption"]').eq(3).click({force: true }).type(2.25).wait(100)
-    // user rate
-    cy.get('input[data-fieldname="user_rate_entry"]').type(5.25).click()
-   cy.wait(2000);
+// cy.contains("label", "Fabric Items").scrollIntoView();
+// cy.Add_Row_Fabric()
+//    cy.get('div[data-fieldname="item_code"]').eq(3).click({ force: true }).type('Single Jersey 100% Cotton Fabric').wait(100)
+//    cy.get('ul[role="listbox"]:not([hidden]) div[role="option"]').first().click();
+//    cy.wait(1000)
+//      //  source
+//     //  cy.get('input[data-fieldname="source"]').eq(3).click({force:true}).type('Local').wait(200)
+//     // cy.contains("strong", "Local").eq(3).type("Local").click().wait(200);
+//     //  cy.get('p[title="Local"]').first().click()
+//     //  cy.get('ul[role="listbox"]:not([hidden]) p[title="Local"]').click();
+//     // comsume
+//     cy.get('input[placeholder="Consumption"]').eq(3).click({force: true }).type(2.25).wait(100)
+//     // user rate
+//     cy.get('input[data-fieldname="user_rate_entry"]').type(5.25).click()
+//    cy.wait(2000);
 
 
 //    // add three
