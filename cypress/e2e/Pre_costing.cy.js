@@ -90,6 +90,28 @@ describe('Login and PreCosting Single Product', () => {
   cy.get('div[data-fieldname="user_rate_entry"] input').eq(1).click().type("5.25").wait(1000);
    cy.wait(2000);
 
+
+   cy.contains('kbd', 'Ctrl + Down').click({ force: true });
+
+
+
+
+   //  edit icon  fabric -02
+   cy.get('div.btn-open-row[data-original-title="Edit"]').eq(1).click().scrollIntoView();
+   cy.get('input[aria-expanded="true"]').type("fabric-0003").wait(1000);
+   cy.get('div[role="option"]').contains("Single Jersey 100% Cotton Fabric").click();
+
+    
+  cy.get('input[data-fieldname="dyeing_or_fabric_color"]').eq(0).click({ force: true }).type('Black').wait(500);              
+
+
+  cy.get('ul[role="listbox"] div[role="option"]')
+   .first()
+  . click({ force: true })
+
+    cy.get('input[data-fieldname="fabric_gsm"]').click().type("GSM-130-0539").wait(1000);
+    cy.get('div[role="option"]').contains("GSM-130-0539").click();  
+
     // cy.get('div[role="option"]').contains("Black")
     // cy.get('div[role="option"]').contains("Black").should("be.visible");
     // cy.get('div[role="option"]').contains("Black").click();  
