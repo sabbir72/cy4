@@ -27,86 +27,28 @@ describe('Login and PreCosting Single Product', () => {
     cy.get('input[data-fieldname="currency"]').scrollIntoView().click().clear().type("USD");
     cy.get('p[title="USD"]').click();
 
-    // =================no need now====================
-    // cy.get('div[data-fieldname="add_wastage_in_quantity"]').check();
-    // cy.get('div[data-fieldname="item_level_operation"]').check({ force: true});
-    // cy.findByRole("checkbox", { name: "Add Wastage in Quantity" }).click();
-    // cy.findByRole("checkbox", { name: "Item Level Operation" }).click();
+    
     // ----------------------------------------------------------------
 
     // add row  -- mathod
-    // Cypress.Commands.add("fabricItemCode", (itemCode) => {
-    //   cy.get(
-    //     "div:nth-child(5)>div:nth-child(2)>div:nth-child(6)>div:nth-child(1)>div:nth-child(1)>button:nth-child(3)"
-    //   ).click({ force: true });
-    //   cy.wait(500);
+    Cypress.Commands.add("fabricItemCode", (itemCode) => {
+      cy.get(
+        "div:nth-child(5)>div:nth-child(2)>div:nth-child(6)>div:nth-child(1)>div:nth-child(1)>button:nth-child(3)"
+      ).click({ force: true });
+      cy.wait(500);
 
-    //   cy.get('div[data-fieldname="item_code"]')
-    //     .eq(1)
-    //     .click({ force: true })
-    //     .type(itemCode);
-    //   cy.get('div[data-fieldname="item_code"] p').first().click();
-    // });
-    // cy.fabricItemCode("fabric-0004");
-    // cy.fabricItemCode("fabric-0003");
+      cy.get('div[data-fieldname="item_code"]')
+        .eq(1)
+        .click({ force: true })
+        .type(itemCode);
+      cy.get('div[data-fieldname="item_code"] p').first().click();
+    });
+    cy.fabricItemCode("fabric-0004");
+    cy.wait(1000);
+    cy.fabricItemCode("fabric-0003");
 
     // ===========2nd mathhod========================================
-    Cypress.Commands.add("Add_Row_Fabric", () => {
-      // নির্দিষ্ট item_code বোতামে ক্লিক
-      cy.get(
-        "div:nth-child(5) > div:nth-child(2) > div:nth-child(6) > div:nth-child(1) > div:nth-child(1) > button:nth-child(3)"
-      ).click({ force: true });
-    });
-
-    // addd one
-    cy.contains("label", "Fabric Items").scrollIntoView();
-   cy.Add_Row_Fabric()
-   cy.get('div[data-fieldname="item_code"]').eq(1).click({ force: true }).type('fabric').wait(100)
-   cy.get('ul[role="listbox"]:not([hidden]) div[role="option"]').first().click();
-   cy.wait(1000)
-    //  source
-   cy.get('input[data-fieldname="source"]').type('Local').click().wait(200)
-   cy.get('p[title="Local"]').first().click()
-  //  cy.get('ul[role="listbox"]:not([hidden]) p[title="Local"]').click();
-  // comsume
-  cy.get('input[placeholder="Consumption"]').eq(0).click({force:true}).type(2.25).wait(100)
-  // user rate
-  cy.get('input[data-fieldname="user_rate_entry"]').type(5.25).click()
-   cy.wait(2000)
-
-   // add two
-
-// cy.contains("label", "Fabric Items").scrollIntoView();
-// cy.Add_Row_Fabric()
-//    cy.get('div[data-fieldname="item_code"]').eq(3).click({ force: true }).type('Single Jersey 100% Cotton Fabric').wait(100)
-//    cy.get('ul[role="listbox"]:not([hidden]) div[role="option"]').first().click();
-//    cy.wait(1000)
-//      //  source
-//     //  cy.get('input[data-fieldname="source"]').eq(3).click({force:true}).type('Local').wait(200)
-//     // cy.contains("strong", "Local").eq(3).type("Local").click().wait(200);
-//     //  cy.get('p[title="Local"]').first().click()
-//     //  cy.get('ul[role="listbox"]:not([hidden]) p[title="Local"]').click();
-//     // comsume
-//     cy.get('input[placeholder="Consumption"]').eq(3).click({force: true }).type(2.25).wait(100)
-//     // user rate
-//     cy.get('input[data-fieldname="user_rate_entry"]').type(5.25).click()
-//    cy.wait(2000);
-
-
-//    // add three
-//  cy.contains("label", "Fabric Items").scrollIntoView();
-// cy.Add_Row_Fabric()
-// cy.get('div[data-fieldname="item_code"]').eq(5).click({ force: true }).type('Fabric Material1').wait(100)
-// cy.get('ul[role="listbox"]:not([hidden]) div[role="option"]').first().click();
-// cy.wait(2000);
-
-//    // add Four
-//    cy.contains("label", "Fabric Items").scrollIntoView();
-//    cy.Add_Row_Fabric()
-//    cy.get('div[data-fieldname="item_code"]').eq(7).click({ force: true }).type('100% BIO Cotton Mesh SA').wait(100)
-//    cy.get('ul[role="listbox"]:not([hidden]) div[role="option"] p').contains("100% BIO Cotton Mesh SA").click();
-//    cy.wait(2000)
-
+    
 
 //   //  delete row
 //   cy.get("div.row-check input").eq(4).check()
@@ -116,8 +58,41 @@ describe('Login and PreCosting Single Product', () => {
     // ================single =====================================
     
 
-    //  edit icon
-    // cy.get('div.btn-open-row[data-original-title="Edit"]').click();
+    //  edit icon  fabric -01
+    cy.get('div.btn-open-row[data-original-title="Edit"]').eq(0).click().scrollIntoView();
+ 
+    
+  cy.get('input[data-fieldname="dyeing_or_fabric_color"]')
+  .should('be.visible')
+  .click({ force: true })  
+  .type('Black')           
+  .wait(500);              
+
+
+  cy.get('ul[role="listbox"] div[role="option"]')
+   .first()
+  . click({ force: true })
+
+    cy.get('input[data-fieldname="fabric_gsm"]').click().type("GSM-130-0539").wait(1000);
+    cy.get('div[role="option"]').contains("GSM-130-0539").click();  
+
+
+    cy.get('input[data-fieldname="finish_dia_width"]').click().type("DIA-00001").wait(1000);  
+    cy.get('div[role="option"]').contains("DIA-00001").click();
+  
+    
+    cy.get("div:nth-child(14)>div:nth-child(1)>div:nth-child(2)>div:nth-child(1)>div:nth-child(1)>div:nth-child(1)>input:nth-child(1)").click()
+    cy.findByRole("option",{"name":"Local"}).click()
+
+  cy.get('div[data-fieldname="quantity_and_rate"] input').eq(0).scrollIntoView()
+  cy.get('div[data-fieldname="quantity_and_rate"] input').eq(0).click({ force: true }).clear().type('1.5');
+  cy.wait(1000);
+  cy.get('div[data-fieldname="user_rate_entry"] input').eq(1).click().type("5.25").wait(1000);
+   cy.wait(2000);
+
+    // cy.get('div[role="option"]').contains("Black")
+    // cy.get('div[role="option"]').contains("Black").should("be.visible");
+    // cy.get('div[role="option"]').contains("Black").click();  
     // cy.get('input[aria-expanded="true"]').click()
     // cy.get("div.form-area p").eq(2).click()
     // cy.get('div[aria-modal="true"] input').type("fabric-0004");
