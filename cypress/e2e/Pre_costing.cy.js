@@ -164,6 +164,13 @@ describe('Login and PreCosting Single Product', () => {
     cy.contains("kbd", "Ctrl + Down").click({ force: true });
     cy.wait(1000);
 
+    cy.get('input[data-fieldname="gmt_wastage"]')
+      .eq(0)
+      .click()
+      .clear()
+      .type("0.5")
+      .wait(1000);
+
 
 
     //  edit icon  fabric -02
@@ -211,7 +218,55 @@ describe('Login and PreCosting Single Product', () => {
   //     .type("3.25")
   //     .wait(1000);
 
-  
+  // ===================== Accessories =========================
+
+  cy.get('div[data-fieldname="accessories_items"] button').eq(2).click({ force: true });
+  cy.wait(1000);    
+
+  cy.get('div.btn-open-row[data-original-title="Edit"]').eq(0).click();
+  cy.wait(1000);    
+
+
+  cy.get('input[data-fieldname="item_code"]')
+    .eq(0)
+    .click()
+    .type("Accessories-0022")
+    .wait(1000);
+
+  cy.get('div[role="option"]').contains("Accessories Test").first().click();
+  cy.wait(1000);    
+
+  cy.get('div[data-fieldname="source"] input')
+    .eq(0)
+    .click()
+    .clear()
+    .type("Local")
+    .wait(1000);
+
+  cy.get('div[role="option"]').contains("Local").click();
+  cy.wait(1000);
+
+  cy.get('div[data-fieldname="quantity_and_rate"] input')
+    .eq(0)
+    .scrollIntoView()
+
+    .click({ force: true })
+    .clear()   
+    .type("2.5")
+    .wait(1000);
+
+  cy.get('input[data-fieldname="user_rate_entry"]')
+    .eq(0)  
+
+    .click()
+    .type("4.25") 
+    .wait(1000);
+
+  cy.contains("kbd", "Ctrl + Down").click({ force: true });
+  cy.wait(1000);        
+
+
+
     // cy.printErrors();
   })
 
