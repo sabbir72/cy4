@@ -230,6 +230,7 @@ describe('Login and PreCosting Single Product', () => {
   cy.get('input[data-fieldname="item_code"]')
     .eq(0)
     .click()
+    .clear()
     .type("Accessories-0022")
     .wait(1000);
 
