@@ -220,6 +220,8 @@ describe('Login and PreCosting Single Product', () => {
 
   // ===================== Accessories =========================
 
+  cy.contains('label', 'Accessories Items').scrollIntoView()
+
   cy.get('div[data-fieldname="accessories_items"] button').eq(2).click({ force: true });
   cy.wait(1000);    
 
