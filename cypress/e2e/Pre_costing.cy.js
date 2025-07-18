@@ -142,8 +142,8 @@ describe("Login and PreCosting Single Product", () => {
 
      // Wait for dropdown and select source
      cy.get('ul[role="listbox"] li')
-       .contains(data.source)
-       .click({ force: true });
+       .contains(data.source).first()
+       .click();
 
      // Fill Qty Ratio
      cy.get('input[data-fieldname="qty_ratio"]')
