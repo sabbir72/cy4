@@ -29,12 +29,16 @@ describe("Login and PreCosting Single Product", () => {
     // Cost Configuration Section
     cy.contains("div.section-head", "Cost Configuration")
       .scrollIntoView()
-      .click();
+      .click({force:true});
     cy.wait(1000);
     // selection
 
-    //  cy.get('select[data-fieldname="rm_cost_as_per"]').select("Manual");
-    //  cy.wait(1000)
+  //     cy.get('select[data-fieldname="rm_cost_as_per"]').click()
+  // .should('be.visible') // ensure it’s visible
+  // .select('Manual'); // or 'Valuation Rate', etc.
+
+
+     cy.wait(1000)
 
     // Set Currency
     // cy.get('input[data-fieldname="currency"]').click().clear().type("USD");
@@ -63,21 +67,21 @@ describe("Login and PreCosting Single Product", () => {
     cy.get('div[role="option"]').contains("60/40 CVC FLEECE").click();
     cy.wait(1000);
 
-    // cy.get('input[data-fieldname="dyeing_or_fabric_color"]')
-    //   .first()
-    //   .click()
-    //   .type("Black");
-    // cy.get('ul[role="listbox"] div[role="option"]').contains("Black").click();
-    // cy.wait(1000);
+    cy.get('input[data-fieldname="dyeing_or_fabric_color"]')
+      .first()
+      .click()
+      .type("Black");
+    cy.get('ul[role="listbox"] div[role="option"]').contains("Black").click();
+    cy.wait(1000);
 
-    // cy.get('input[data-fieldname="fabric_gsm"]').click().type("GSM-130-0539");
-    // cy.get('div[role="option"]').contains("GSM-130-0539").click();
-    // cy.wait(1000);
+    cy.get('input[data-fieldname="fabric_gsm"]').click().type("GSM-130-0539");
+    cy.get('div[role="option"]').contains("GSM-130-0539").click();
+    cy.wait(1000);
 
-    // cy.get('input[data-fieldname="finish_dia_width"]')
-    //   .click()
-    //   .type("DIA-00001");
-    // cy.get('div[role="option"]').contains("DIA-00001").click();
+    cy.get('input[data-fieldname="finish_dia_width"]')
+      .click()
+      .type("DIA-00001");
+    cy.get('div[role="option"]').contains("DIA-00001").click();
     cy.wait(1000);
 
      cy.get('input[data-fieldname="source"]').eq(0).click({force:true}).type("local")
@@ -103,43 +107,53 @@ describe("Login and PreCosting Single Product", () => {
     cy.wait(1000);
 
     // ================= Accessories Section ====================
-    // cy.contains("label", "Accessories Items").scrollIntoView();
-    // cy.wait(2000);
+    cy.contains("label", "Accessories Items").scrollIntoView();
+    cy.wait(1000);
 
-    // Cypress.Commands.add("addAccRow", () => {
-    //   cy.contains("label", "Accessories Items")
-    //     .parents(".form-group")
-    //     .find("button.grid-add-row")
-    //     .click();
-    // });
+    Cypress.Commands.add("addAccRow", () => {
+      cy.contains("label", "Accessories Items")
+        .parents(".form-group")
+        .find("button.grid-add-row")
+        .click();
+    });
 
-    // cy.addAccRow();
+    cy.addAccRow();
 
-    // cy.get('div.btn-open-row[data-original-title="Edit"]').eq(1).click();
+    cy.get('div.btn-open-row[data-original-title="Edit"]').eq(1).click();
 
-    // cy.wait(1000);
+    cy.wait(1000);
 
-    //    cy.get('input[data-fieldname="item_code"]').eq(1).click({ force: true }).clear().type("Accessories-0003")
+       cy.get('input[data-fieldname="item_code"]').eq(1).click({ force: true }).clear().type("Accessories-0003")
      
-    // cy.get('div[data-fieldname="source"] input').eq(1).click()
-    //  cy.get('div[role="option"]').contains("Local").eq(0).click();
+    cy.get('div[data-fieldname="source"] input').eq(1).click()
+     cy.get('div[role="option"]').contains("Local").click({force:true});
 
-    // // consumtion
-    // cy.get('input[data-fieldname="qty_ratio"]').eq(1).click().clear().type(0.554)
+    // consumtion
+    cy.get('input[data-fieldname="qty_ratio"]').eq(1).click().clear().type(0.554)
 
-    // cy.get('input[data-fieldname="user_rate_entry"]').eq(1).click().clear().type(1.2)
-    // cy.get('button.grid-collapse-row').eq(1).click({ force: true });
+    cy.get('input[data-fieldname="user_rate_entry"]').eq(1).click().clear().type(1.2)
+    cy.get('button.grid-collapse-row').eq(1).click({ force: true });
 
 // Accesories template
 
-cy.get('input[data-fieldname="accessories_template"]').click().type("TOM TAILOR-00915")
-cy.get('div[role="option"] p[title="TOM TAILOR-00915"]').click()
+// cy.get('input[data-fieldname="accessories_template"]').click().type("TOM TAILOR-00915")
+// cy.get('div[role="option"] p[title="TOM TAILOR-00915"]').click()
 
 
 
 
 // pre_costing_data_tab
-cy.get('a[data-fieldname="pre_costing_data_tab"]').click()
+cy.get('a#pre-costing-pre_costing_data_tab-tab').click().wait(500);
+
+
+
+cy.get('input[data-fieldname="min_ord_qty"]').click().type(2000);
+
+cy.get('input[data-fieldname="delivery_terms"]').click({force:true}).type("FOB")
+cy.get('div[role="option"]').contains("FOB").click({force:true});
+
+cy.get('div[data-fieldname="sales_price"] input').clear().click().type(2.00);
+
 cy.get('input[data-fieldname="payment_terms"]').click().type("120 Days")
 cy.get('div[role="option"]').contains("120 Days").click({force:true});
 
@@ -147,12 +161,8 @@ cy.get('div[role="option"]').contains("120 Days").click({force:true});
 cy.get('input[data-fieldname="shipping_mode"]').click().type("Sea")
 cy.get('div[role="option"]').contains("Sea").click({force:true});
 
-cy.get('input[data-fieldname="delivery_terms"]').click().type("FOB")
-cy.get('div[role="option"]').contains("FOB").click({force:true});
 
-
-cy.get('input[data-fieldname="sales_price"]').clear().click().type(2.00)
-
-    cy.wait(1000);
+   // Save the form  not fixed 
+        cy.get('button[data-label="Save"] span').eq(0).click({force:true});
   });
 });
