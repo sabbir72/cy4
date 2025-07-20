@@ -241,7 +241,7 @@ describe("Test-01 Login and Buyer wise color size Test with Soft Error Notes", (
     // cy.get('input[data-duration="seconds"]').click().clear().type(2).wait(1000);
     // cy.get('input[data-fieldtype="Duration"]').click("right");
 
-    // Save the form
+    // Save the form  
     cy.get('button.btn-primary[data-label="Save"]').eq(1).click({ force: true });
 
     // Optionally add error print or confirmation check here
