@@ -234,12 +234,12 @@ describe("Test-01 Login and Buyer wise color size Test with Soft Error Notes", (
     cy.get('div[data-fieldname="column_break_brmlw"]').click();
     cy.wait(1000);
 
-    // Optional second duration input block (if needed)
-    cy.get('input[data-duration="days"]').clear().type(2).wait(1000);
-    cy.get('input[data-duration="hours"]').click().type(2).wait(1000);
-    cy.get('input[data-duration="minutes"]').click().clear().type(2).wait(1000);
-    cy.get('input[data-duration="seconds"]').click().clear().type(2).wait(1000);
-    cy.get('input[data-fieldtype="Duration"]').click("right");
+    // // Optional second duration input block (if needed)
+    // cy.get('input[data-duration="days"]').clear().type(2).wait(1000);
+    // cy.get('input[data-duration="hours"]').click().type(2).wait(1000);
+    // cy.get('input[data-duration="minutes"]').click().clear().type(2).wait(1000);
+    // cy.get('input[data-duration="seconds"]').click().clear().type(2).wait(1000);
+    // cy.get('input[data-fieldtype="Duration"]').click("right");
 
     // Save the form
     cy.get('button.btn-primary[data-label="Save"]').eq(1).click({ force: true });
