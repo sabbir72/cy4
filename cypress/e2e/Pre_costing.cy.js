@@ -139,6 +139,14 @@ describe("Login and PreCosting Single Product", () => {
 // cy.get('input[data-fieldname="accessories_template"]').click().type("TOM TAILOR-00915")
 // cy.get('div[role="option"] p[title="TOM TAILOR-00915"]').click()
 
+// Operation section
+cy.contains('a.nav-link', 'Operations').click();
+cy.get('input[data-fieldname="total_smv"]').click().type(5.27);
+
+cy.get('input[data-fieldname="manpower"]').click().type(25);
+cy.get('input[data-fieldname="avg_efficiency"]').click().type(47);
+cy.get('input[data-fieldname="peak_effieciency"]').click().type(50);
+cy.wait(3000)
 
 
 

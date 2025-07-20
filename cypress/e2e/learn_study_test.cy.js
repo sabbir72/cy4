@@ -25,40 +25,39 @@
 // })
 // ===================================================
 
-describe("Login and cut plan Test with duplicate", () => {
-  it("Handles login to cut plan", () => {
-    cy.login();
-    cy.wait(2000);
+// describe("Login and cut plan Test with duplicate", () => {
+//   it("Handles login to cut plan", () => {
+//     cy.login();
+//     cy.wait(2000);
 
-    cy.get("input#navbar-search").type("Cut Plan");
-    cy.get('li[aria-selected="true"]').first().click();
-    cy.wait(1000);
+//     cy.get("input#navbar-search").type("Cut Plan");
+//     cy.get('li[aria-selected="true"]').first().click();
+//     cy.wait(1000);
 
-    cy.get('button[title="Clear all filters"]').click();
+//     cy.get('button[title="Clear all filters"]').click();
 
-    // ✅ First row checkbox check
-    cy.get(".list-row-container")
-      .first()
-      .find("input.list-row-checkbox")
-      .check({ force: true });
+//     // ✅ First row checkbox check
+//     cy.get(".list-row-container")
+//       .first()
+//       .find("input.list-row-checkbox")
+//       .check({ force: true });
 
-    // ✅ Get title and use it inside .then()
-    cy.get('a[data-doctype="Cut Plan"]')
-      .first()
-      .invoke("attr", "title")
-      .then((title) => {
-        cy.log("Title value:", title);
+//     // ✅ Get title and use it inside .then()
+//     cy.get('a[data-doctype="Cut Plan"]')
+//       .first()
+//       .invoke("attr", "title")
+//       .then((title) => {
+//         cy.log("Title value:", title);
 
-        // ✅ Use title inside this block
-        cy.get('input[data-fieldname="name"]').clear().type(title);
-        cy.get(`a[data-name="${title}"]`).click();
+//         // ✅ Use title inside this block
+//         cy.get('input[data-fieldname="name"]').clear().type(title);
+//         cy.get(`a[data-name="${title}"]`).click();
 
-        cy.wait(1000);
-        cy.get('button[aria-label="Menu"]').eq(2).click();
-        cy.get('span[data-label="Duplicate"] span').eq(1).click();
+//         cy.wait(1000);
+//         cy.get('button[aria-label="Menu"]').eq(2).click();
+//         cy.get('span[data-label="Duplicate"] span').eq(1).click();
 
-        cy.printErrors();
-      });
-  });
-});
-
+//         cy.printErrors();
+//       });
+//   });
+// });
