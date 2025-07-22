@@ -18,6 +18,21 @@ describe("Login and cut plan Test with duplicate", () => {
     cy.get('input[data-fieldname="customer"]').eq(1).click()
      cy.get('div[role="option"]').contains("JACK & JONES").click();
 
+    cy.get('input[data-fieldname="season"]')
+    .should('be.visible')
+    .clear()
+    .type('Summer');
+
+    
+  cy.get('div[role="option"]').contains('Summer').click();
+
+
+cy.get('div[data-fieldname="currency_and_price_list"] div').eq(0).click()
+
+cy.get('input[data-fieldname="currency"]').click().clear().type("USD")
+  cy.get('div[role="option"]').contains('USD').click();
+  
+
 
 //     cy.get('button[title="Clear all filters"]').click();
 
@@ -45,3 +60,8 @@ describe("Login and cut plan Test with duplicate", () => {
         cy.printErrors();
       });
   });
+
+
+  // Print
+
+  
