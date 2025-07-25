@@ -16,14 +16,12 @@ describe("Login and cut plan Test with duplicate", () => {
 
     // customer
     cy.get('input[data-fieldname="customer"]').eq(1).click()
-     cy.get('div[role="option"]').contains("JACK & JONES").click();
+     cy.get('div[role="option"]').contains("TOM TAILOR").click();
 
     cy.get('input[data-fieldname="season"]')
     .should('be.visible')
     .clear()
     .type('Summer');
-
-    
   cy.get('div[role="option"]').contains('Summer').click();
 
 
@@ -32,7 +30,29 @@ cy.get('div[data-fieldname="currency_and_price_list"] div').eq(0).click()
 cy.get('input[data-fieldname="currency"]').click().clear().type("USD")
   cy.get('div[role="option"]').contains('USD').click();
   
+cy.get('input[data-fieldname="style_no"]').type('Printed Photo T-Shirt').click()
+cy.get('div[role="option"]').contains("Printed Photo T-Shirt").click()
 
+cy.get('input[data-fieldname="quantity"]').clear().click().type(200)
+
+
+// date 
+cy.get('input[data-fieldname="shipment_date"]').click();
+
+  // Select year and month first (if dropdowns are available)
+  cy.get('.datepicker--nav-title').eq(2).click({force:true}); // open year/month picker
+
+  // Optional: Select year (if required)
+  cy.contains('.datepicker--nav-title', '2025').click({ force: true });
+
+  // Optional: Click on July
+  cy.contains('.datepicker--cell-month', 'July').click({ force: true });
+
+  // Finally: Select 31
+  cy.get('.datepicker--cell-day')
+    .not('.-other-month-')     // only current month dates
+    .contains(/^31$/)
+    .click();
 
 //     cy.get('button[title="Clear all filters"]').click();
 
