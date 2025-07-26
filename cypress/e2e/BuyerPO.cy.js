@@ -35,24 +35,48 @@ cy.get('div[role="option"]').contains("Printed Photo T-Shirt").click()
 
 cy.get('input[data-fieldname="quantity"]').clear().click().type(200)
 
+cy.get('input[data-fieldname="shipment_date"]')
+  .clear()
+  .type(' 28-08-2025').click({force:true}); // 🎯 যদি এ ফরম্যাটে সাপোর্ট করে
 
-// date 
-cy.get('input[data-fieldname="shipment_date"]').click();
 
-  // Select year and month first (if dropdowns are available)
-  cy.get('.datepicker--nav-title').eq(2).click({force:true}); // open year/month picker
+// function selectDate(date, month, year) {
+//   cy.get('input[data-fieldname="shipment_date"]').click();
 
-  // Optional: Select year (if required)
-  cy.contains('.datepicker--nav-title', '2025').click({ force: true });
+//   // মাস ও বছর সঠিক না হলে, পুনরায় next/month ক্লিক করে যায়
+//   cy.get('.datepicker--nav-title').then(($title) => {
+//     if (!$title.text().includes(year)) {
+//       cy.get('.datepicker--nav-action[data-action="next"]').click();
+//       cy.wait(300); // wait for DOM update
+//       selectDate(date, month, year);
+//     } else {
+//       // cy.get(`.datepicker--cell-month[data-month="${month}"]`).click();
+//       cy.get(`.datepicker--cell-day[data-date="${date}"][data-month="${month}"][data-year="${year}"]`)
+//         .should('be.visible')
+//         .click();
+//     }
+//   });
+// }
 
-  // Optional: Click on July
-  cy.contains('.datepicker--cell-month', 'July').click({ force: true });
 
-  // Finally: Select 31
-  cy.get('.datepicker--cell-day')
-    .not('.-other-month-')     // only current month dates
-    .contains(/^31$/)
-    .click();
+// // Call example:
+// selectDate(28,  2025); //
+
+// // date 
+// cy.get('input[data-fieldname="shipment_date"]').click();
+
+// //   // Select year and month first (if dropdowns are available)
+//   cy.get('.datepicker--nav-title').eq(3).click({force:true}); // open year/month picker
+ 
+//    cy.get('.datepicker--cell-month[data-month="6"]').click();
+// //   // Optional: Select year (if required)
+//   // cy.contains('.datepicker--nav-title', '2025').click({ force: true });
+
+// //   // Optional: Click on July
+//   // cy.contains('.datepicker--cell-month', 'July').click({ force: true });
+
+// //   // Finally: Select 31
+//  cy.get('.datepicker--cell-day[data-date="31"][data-month="6"][data-year="2025"]').click();
 
 //     cy.get('button[title="Clear all filters"]').click();
 
